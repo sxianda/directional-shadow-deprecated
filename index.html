@@ -2,14 +2,28 @@
 <html>
 <head>
 <style>
+.viewport {
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  position: relative;
+}
+
 .square {
   width:100px;
   height:100px;
 }
 </style>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    initializeDirectionalShadow(document.querySelector('.viewport'));
+  });
+</script>
 </head>
 <body>
+  <div class="viewport">
   <div class="directional-shadow square" style="background:white; border:solid 2px black;"></div>
   <button type="button" id="button">flip</button>
+  </div>
 </body>
 </html>
