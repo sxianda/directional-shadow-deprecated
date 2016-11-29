@@ -1,2 +1,2 @@
-function initializeDirectionalShadow() {
+function initializeDirectionalShadow(clip) {
 }
