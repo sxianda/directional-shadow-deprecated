@@ -7,5 +7,5 @@ function toggleElement(card, targetDegrees) {
   card.style.transform = "translateZ(-100px) rotateY(" + targetDegrees + "deg)";
   card.style.webkitTransform = "translateZ(-100px) rotateY(" + targetDegrees + "deg)";
   
-  updateShadows(card, "rotateY(" + targetDegrees + "deg)", "rotateY(" + targetDegrees + "deg)");
+  updateShadows(card, "translateZ(-100px) rotateY(" + targetDegrees + "deg)", "translateZ(-100px) rotateY(" + targetDegrees + "deg)");
 }
