@@ -1,31 +1,148 @@
 <!DOCTYPE html>
 <html>
-<head>
-<style>
-.viewport {
-  height: 100%;
-  overflow-x: hidden;
-  overflow-y: hidden;
-  position: relative;
-}
-
-.square {
-  width:300px;
-  height:300px;
-  background:white;
-  border:solid 2px black;
-}
-</style>
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    initializeDirectionalShadow(document.querySelector('.viewport'));
-  });
-</script>
-</head>
-<body>
-  <div class="viewport">
-  <div class="directional-shadow square" shadow-x=20 shadow-y=30 shadow-angle=0 shadow-depth=180></div>
-  <button type="button" id="button">flip</button>
-  </div>
-</body>
+  <head>
+    <style>
+      .square {
+        position: absolute;
+        top: 20px;
+        left: 100px;
+        width: 250px;
+        height: 250px;
+        transform-style: preserve-3d;
+        -webkit-transform-style: preserve-3d;
+      }
+    
+    .container {
+      position: absolute;
+    }
+    
+    figure {
+      margin: 0;
+      display: block;
+      position: absolute;
+      width: 250px;
+      height: 250px;
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+      -webkit-transform-style: preserve-3d;
+      transform-style: preserve-3d;
+    }
+    
+    .front {
+      background-color: lightgrey;
+    }
+    
+    .back {
+      background-color: white;
+      transform: rotateY(180deg);
+      -webkit-transform: rotateY(180deg);
+    }
+    
+    body {
+      background-color: #DCDCDC;
+    }
+    </style>
+    <link type="text/css" rel="stylesheet" href="scripts/directional-shadow.css">
+      <script src="scripts/directional-shadow.js"></script>
+      <script src="scripts/flip-animation.js"></script>
+      <script>
+        document.addEventListener('DOMContentLoaded', function() {
+                                  initializeDirectionalShadow(document.querySelector('body'));
+                                  });
+        </script>
+      </head>
+  
+  <body>
+    <div id="first-row">
+      <div class="container">
+        <div class="shadow-collection">
+          <div class="perspective">
+            <div id="square1" class="directional-shadow square" shadow-x="20" shadow-y="30" shadow-depth="500px" onmouseover="toggleElement(this, 130)" onmouseleave="toggleElement(this, 0.01)">
+              <figure class="front">front</figure>
+              <figure class="back">This is the content.</figure>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="container" style="left:270px;">
+        <div class="shadow-collection">
+          <div class="perspective">
+            <div id="square2" class="directional-shadow square" shadow-x="20" shadow-y="30" shadow-depth="1000px" onmouseover="toggleElement(this, 180)" onmouseleave="toggleElement(this, 0.01)">
+              <figure class="front">front</figure>
+              <figure class="back">This is the content.</figure>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="container" style="left:532px;">
+        <div class="shadow-collection">
+          <div class="perspective">
+            <div id="square2" class="directional-shadow square" shadow-x="20" shadow-y="30" shadow-depth="1000px" onmouseover="toggleElement(this, 180)" onmouseleave="toggleElement(this, 0.01)">
+              <figure class="front">front</figure>
+              <figure class="back">This is the content.</figure>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="container" style="left:795px;">
+        <div class="shadow-collection">
+          <div class="perspective">
+            <div id="square2" class="directional-shadow square" shadow-x="20" shadow-y="30" shadow-depth="1000px" onmouseover="toggleElement(this, 180)" onmouseleave="toggleElement(this, 0.01)">
+              <figure class="front">front</figure>
+              <figure class="back">This is the content.</figure>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div id="second-row">
+      <div class="container" style="top: 280px;">
+        <div class="shadow-collection">
+          <div class="perspective">
+            <div id="square1" class="directional-shadow square" shadow-x="20" shadow-y="30" shadow-depth="1000px" onmouseover="toggleElement(this, 180)" onmouseleave="toggleElement(this, 0.01)">
+              <figure class="front">front</figure>
+              <figure class="back">This is the content.</figure>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="container" style="top: 280px; left:270px;">
+        <div class="shadow-collection">
+          <div class="perspective">
+            <div id="square2" class="directional-shadow square" shadow-x="20" shadow-y="30" shadow-depth="1000px" onmouseover="toggleElement(this, 180)" onmouseleave="toggleElement(this, 0.01)">
+              <figure class="front">front</figure>
+              <figure class="back">This is the content.</figure>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="container" style="top: 280px; left:532px;">
+        <div class="shadow-collection">
+          <div class="perspective">
+            <div id="square2" class="directional-shadow square" shadow-x="20" shadow-y="30" shadow-depth="1000px" onmouseover="toggleElement(this, 180)" onmouseleave="toggleElement(this, 0.01)">
+              <figure class="front">front</figure>
+              <figure class="back">This is the content.</figure>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="container" style="top: 280px; left:795px;">
+        <div class="shadow-collection">
+          <div class="perspective">
+            <div id="square2" class="directional-shadow square" shadow-x="20" shadow-y="30" shadow-depth="1000px" onmouseover="toggleElement(this, 180)" onmouseleave="toggleElement(this, 0.01)">
+              <figure class="front">front</figure>
+              <figure class="back">This is the content.</figure>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>
