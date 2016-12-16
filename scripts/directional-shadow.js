@@ -56,10 +56,6 @@ function updateShadows(card, transition, transform, duration) {
   var shadowCard = collection.querySelectorAll('div.shadow-card')[0];
   var shadowCardGradient = collection.querySelectorAll('div.shadow-card-gradient')[0];
   
-  
-  shadowCard.style.transformOrigin = "50% 0%";
-  shadowCardGradient.style.transformOrigin = "50% 0%";
-  
   shadowCard.style.webkitTransition = transition;
   shadowCardGradient.style.webkitTransition = transition;
   
