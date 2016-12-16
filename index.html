@@ -8,8 +8,8 @@
         left: 100px;
         width: 250px;
         height: 250px;
-		transform: translateZ(100px);
-		-webkit-transform: translateZ(100px);
+        transform: translateZ(100px);
+        -webkit-transform: translateZ(100px);
         transform-style: preserve-3d;
         -webkit-transform-style: preserve-3d;
       }
@@ -30,14 +30,35 @@
       transform-style: preserve-3d;
     }
     
+    .bigger {
+        width: 400px;
+        height: 300px;
+        transform: translateZ(200px);
+        -webkit-transform: translateZ(200px);
+    }
+    
     .front {
       background-color: lightgrey;
+      height: 100%;
+      width: 100%;
     }
     
     .back {
       background-color: white;
       transform: rotateY(180deg);
       -webkit-transform: rotateY(180deg);
+      height: 100%;
+      width: 100%;
+    }
+    
+    .perspective {
+      position: absolute;
+      top: 120px;
+      width: 500px;
+      height: 1000px;
+      -webkit-perspective: 1000px;
+      -webkit-perspective-origin: 250px 500px;
+      z-index: -1;
     }
     
     body {
@@ -59,7 +80,7 @@
       <div class="container">
         <div class="shadow-collection">
           <div class="perspective">
-            <div id="square1" class="directional-shadow square" shadow-x="20" shadow-y="30" shadow-depth="1000px" onmouseover="toggleElement(this, 130)" onmouseleave="toggleElement(this, 0.01)">
+            <div id="square1" class="directional-shadow square" shadow-x="20" shadow-y="30" shadow-depth="1000px" onmouseover="toggleElement(this, 100, 130)" onmouseleave="toggleElement(this, 100, 0.01)">
               <figure class="front">front</figure>
               <figure class="back">This is the content.</figure>
             </div>
@@ -70,7 +91,7 @@
       <div class="container" style="left:300px;">
         <div class="shadow-collection">
           <div class="perspective">
-            <div id="square2" class="directional-shadow square" shadow-x="20" shadow-y="30" shadow-depth="1000px" onmouseover="toggleElement(this, 150)" onmouseleave="toggleElement(this, 0.01)">
+            <div id="square2" class="directional-shadow square" shadow-x="20" shadow-y="30" shadow-depth="1000px" onmouseover="toggleElement(this, 100, 150)" onmouseleave="toggleElement(this, 100, 0.01)">
               <figure class="front">front</figure>
               <figure class="back">This is the content.</figure>
             </div>
@@ -81,7 +102,7 @@
       <div class="container" style="left:593px;">
         <div class="shadow-collection">
           <div class="perspective">
-            <div id="square2" class="directional-shadow square" shadow-x="20" shadow-y="30" shadow-depth="1000px" onmouseover="toggleElement(this, 170)" onmouseleave="toggleElement(this, 0.01)">
+            <div id="square2" class="directional-shadow square" shadow-x="20" shadow-y="30" shadow-depth="1000px" onmouseover="toggleElement(this, 100, 170)" onmouseleave="toggleElement(this, 100, 0.01)">
               <figure class="front">front</figure>
               <figure class="back">This is the content.</figure>
             </div>
@@ -92,7 +113,7 @@
       <div class="container" style="left:885px;">
         <div class="shadow-collection">
           <div class="perspective">
-            <div id="square2" class="directional-shadow square" shadow-x="20" shadow-y="30" shadow-depth="1000px" onmouseover="toggleElement(this, 180)" onmouseleave="toggleElement(this, 0.01)">
+            <div id="square2" class="directional-shadow square" shadow-x="20" shadow-y="30" shadow-depth="1000px" onmouseover="toggleElement(this, 100, 179.99)" onmouseleave="toggleElement(this, 100, 0.01)">
               <figure class="front">front</figure>
               <figure class="back">This is the content.</figure>
             </div>
@@ -105,7 +126,7 @@
       <div class="container" style="top: 300px;">
         <div class="shadow-collection">
           <div class="perspective">
-            <div id="square1" class="directional-shadow square" shadow-x="20" shadow-y="30" shadow-depth="700px" onmouseover="toggleElement(this, 130)" onmouseleave="toggleElement(this, 0.01)">
+            <div id="square1" class="directional-shadow square" shadow-x="20" shadow-y="30" shadow-depth="700px" onmouseover="toggleElement(this, 100, 130)" onmouseleave="toggleElement(this, 100, 0.01)">
               <figure class="front">front</figure>
               <figure class="back">This is the content.</figure>
             </div>
@@ -116,7 +137,7 @@
       <div class="container" style="top: 300px; left:300px;">
         <div class="shadow-collection">
           <div class="perspective">
-            <div id="square2" class="directional-shadow square" shadow-x="20" shadow-y="30" shadow-depth="700px" onmouseover="toggleElement(this, 150)" onmouseleave="toggleElement(this, 0.01)">
+            <div id="square2" class="directional-shadow square" shadow-x="20" shadow-y="30" shadow-depth="700px" onmouseover="toggleElement(this, 100, 150)" onmouseleave="toggleElement(this, 100, 0.01)">
               <figure class="front">front</figure>
               <figure class="back">This is the content.</figure>
             </div>
@@ -127,7 +148,7 @@
       <div class="container" style="top: 300px; left:593px;">
         <div class="shadow-collection">
           <div class="perspective">
-            <div id="square2" class="directional-shadow square" shadow-x="20" shadow-y="30" shadow-depth="700px" onmouseover="toggleElement(this, 170)" onmouseleave="toggleElement(this, 0.01)">
+            <div id="square2" class="directional-shadow square" shadow-x="20" shadow-y="30" shadow-depth="700px" onmouseover="toggleElement(this, 100, 170)" onmouseleave="toggleElement(this, 100, 0.01)">
               <figure class="front">front</figure>
               <figure class="back">This is the content.</figure>
             </div>
@@ -138,7 +159,7 @@
       <div class="container" style="top: 300px; left:885px;">
         <div class="shadow-collection">
           <div class="perspective">
-            <div id="square2" class="directional-shadow square" shadow-x="20" shadow-y="30" shadow-depth="700px" onmouseover="toggleElement(this, 180)" onmouseleave="toggleElement(this, 0.01)">
+            <div id="square2" class="directional-shadow square" shadow-x="20" shadow-y="30" shadow-depth="700px" onmouseover="toggleElement(this, 100, 179.99)" onmouseleave="toggleElement(this, 100, 0.01)">
               <figure class="front">front</figure>
               <figure class="back">This is the content.</figure>
             </div>
@@ -146,5 +167,32 @@
         </div>
       </div>
     </div>
+    
+     <div id="third-row">
+      <div class="container" style="top: 1200px">
+        <div class="shadow-collection">
+          <div class="perspective">
+            <div id="square3" class="directional-shadow square bigger" shadow-x="20" shadow-y="30" shadow-depth="1000" onmouseover="toggleElement(this, 200, 130)" onmouseleave="toggleElement(this, 200, 0.01)">
+              <figure class="front">front</figure>
+              <figure class="back">This is the content.</figure>
+            </div>
+          </div>
+        </div>
+      </div>
+     </div>
+    
+    <div id="fourth-row">
+      <div class="container" style="top: 1200px; left: 1000px">
+        <div class ="shadow-collection">
+          <div class="perspective">
+            <div id="square4" class="directional-shadow square" shadow-x="0" shadow-y="0" shadow-depth="300" onclick="toggleElement(this, 100, 150)" onmouseleave="toggleElement(this, 100, 0.01)">
+              <figure class="front">front</figure>
+              <figure class="back">This is the content.</figure>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
   </body>
 </html>
