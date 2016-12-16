@@ -4,24 +4,6 @@
   -webkit-transform-style: preserve-3d;
 }
 
-.perspective {
-  position: absolute;
-  top: 120px;
-  width: 0px;
-  height: 0px;
-  -webkit-perspective: 1000;
-  -webkit-perspective-origin: 250px 500px;
-  z-index: -1;
-}
-
-.perspective-shadow {
-  position: absolute;
-  top: 120px;
-  width: 500px;
-  height: 1000px;
-  z-index: -1;
-}
-
 .shadow-card-gradient {
   opacity: 0.0001;
 }
@@ -29,22 +11,13 @@
 .shadow {
   display: block;
   background-color: #808080;
-  width: 240px;
-  height: 240px;
   margin: 5px;
   -webkit-filter: blur(8px);
 }
 
 .shadow-gradient {
   display: block;
-  width: 240px;
-  height: 240px;
   margin: 5px;
   -webkit-filter: blur(8px);
   background-image: -webkit-linear-gradient(top, #DCDCDC, #808080);
-}
-
-#input-container {
-  position: absolute:
-  z-index: 20;
 }
