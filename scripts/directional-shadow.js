@@ -4,6 +4,8 @@ function initializeDirectionalShadow(clip) {
   // Insert shadow divs for each directional-shadow element.
   for (var i = 0; i < cards.length; i++) {
     var elem = cards[i];
+	var style = window.getComputedStyle(elem, null);
+	
     var elemClassStr = elem.className;
     elemClassStr = elemClassStr.replace(/\bdirectional-shadow\b/,'');
     
@@ -16,15 +18,20 @@ function initializeDirectionalShadow(clip) {
     
     // Create shadow elements.
     var shadowPerspective = document.createElement("div");
-    shadowPerspective.className = "perspective-shadow";
-    shadowPerspective.style.webkitPerspectiveOrigin = shadowX + "% " + shadowY + "%";
+    shadowPerspective.className = "perspective";
+	shadowPerspective.style.webkitPerspectiveOrigin = shadowX + "% " + shadowY + "%";
     shadowPerspective.style.webkitPerspective = shadowDepth;
     
     var shadowCard = document.createElement("div");
     shadowCard.className = "shadow-card" + elemClassStr;
+	// Users should not be allowed to override class styles. 
+	// shadowCard.style.width = elem.style.width;
+	// shadowCard.style.height = elem.style.height;
     
     var shadow = document.createElement("div");
     shadow.className = "shadow";
+	shadow.style.width = (elem.offsetWidth - 10) + "px";
+	shadow.style.height = (elem.offsetHeight - 10) + "px";
     
     parent.insertBefore(shadowPerspective, parent.childNodes[0]);
     shadowPerspective.appendChild(shadowCard);
@@ -32,15 +39,20 @@ function initializeDirectionalShadow(clip) {
     
     // Create shadow gradient elements.
     var shadowGradientPerspective = document.createElement("div");
-    shadowGradientPerspective.className = "perspective-shadow";
+    shadowGradientPerspective.className = "perspective";
     shadowGradientPerspective.style.webkitPerspectiveOrigin = shadowX + "% " + shadowY + "%";
     shadowGradientPerspective.style.webkitPerspective = shadowDepth;
     
     var shadowCardGradient = document.createElement("div");
     shadowCardGradient.className="shadow-card-gradient" + elemClassStr;
+	// Users should not be allowed to override class styles. 
+	// shadowCardGradient.style.width = elem.style.width;
+	// shadowCardGradient.style.height = elem.style.height;
     
     var shadowGradient = document.createElement("div");
     shadowGradient.className="shadow";
+	shadowGradient.style.width = (elem.offsetWidth - 10) + "px";
+	shadowGradient.style.height = (elem.offsetHeight - 10) + "px";
     
     parent.insertBefore(shadowGradientPerspective, parent.childNodes[0]);
     shadowGradientPerspective.appendChild(shadowCardGradient);
