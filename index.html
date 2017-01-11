@@ -12,7 +12,6 @@
         -webkit-transform: translateZ(100px);
         transform-style: preserve-3d;
         -webkit-transform-style: preserve-3d;
-        will-change: transform;
       }
     
     .container {
@@ -29,6 +28,12 @@
       backface-visibility: hidden;
       -webkit-transform-style: preserve-3d;
       transform-style: preserve-3d;
+    }
+
+    button {
+      display: block;
+      width: 50px;
+      height: 20px;
     }
     
     .bigger {
@@ -60,6 +65,7 @@
       -webkit-perspective: 1000px;
       -webkit-perspective-origin: 250px 500px;
       z-index: -1;
+      will-change: transform;
     }
     
     body {
@@ -194,6 +200,24 @@
         </div>
       </div>
     </div>
-    
+   
+    <div id="fifth-row">
+      <div class="container" style="top: 1800px; left: 500px">
+        <div class ="shadow-collection">
+          <div class="perspective">
+            <div id="square-animation" class="directional-shadow square" shadow-x="0" shadow-y="0" shadow-depth="800">
+              <figure class="front">front</figure>
+              <figure class="back">This is the content.</figure>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="transforms" style="position: absolute; top: 1800px; left: 0px">
+      <button value="RotateX" onclick="flipX(170)"></button>
+      <button value="RotateY" onclick="flipY(170)"></button>
+      <button value="RotateZ" onclick="flipZ(170)"></button>
+    </div>
   </body>
 </html>
