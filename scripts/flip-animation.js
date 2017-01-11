@@ -6,6 +6,4 @@ function toggleElement(card, distance, targetDegrees) {
   
   card.style.transform = "translateZ(" + distance + "px) rotateY(" + targetDegrees + "deg)";
   card.style.webkitTransform = "translateZ(" + distance + "px) rotateY(" + targetDegrees + "deg)";
-  
-  updateShadows(card, card.style.transition, card.style.transform);
 }

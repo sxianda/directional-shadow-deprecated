@@ -1,3 +1,11 @@
+var observer = new MutationObserver(function(mutations) {
+                                    mutations.forEach(function(mutation) {
+                                                      updateShadows(mutation.target);
+                                                      });
+                                    });
+
+var config = { attributeFilter: ["style"], };
+
 function initializeDirectionalShadow(clip) {
   var cards = clip.querySelectorAll('div.directional-shadow');
   
@@ -58,26 +66,24 @@ function initializeDirectionalShadow(clip) {
     shadowGradientPerspective.appendChild(shadowCardGradient);
     shadowCardGradient.appendChild(shadowGradient);
     
-    // Add event listeners
-    
+    // Add DOMMutObserver
+    observer.observe(elem, config);
   }
 }
 
-function updateShadows(card, transition, transform, duration) {
+function updateShadows(card) {
   var collection = card.parentElement.parentElement;
   var shadowCard = collection.querySelectorAll('div.shadow-card')[0];
   var shadowCardGradient = collection.querySelectorAll('div.shadow-card-gradient')[0];
   
-  shadowCard.style.webkitTransition = transition;
-  shadowCardGradient.style.webkitTransition = transition;
+  var transition = card.style.transition;
+  var transform = card.style.transform;
+  var webkitTransition = card.style.webkitTransition;
+  var webkitTransform = card.style.webkitTransform;
   
-  shadowCard.style.webkitTransform = transform;
-  shadowCardGradient.style.webkitTransform = transform;
+  shadowCard.style.webkitTransition = webkitTransition;
+  shadowCardGradient.style.webkitTransition = webkitTransition;
   
-  shadowCard.style.webkitAnimation = "";
-  shadowCardGradient.style.webkitAnimation = "";
-  document.body.offsetTop;
-  
-  shadowCard.style.webkitAnimation = "smooth-step " + duration + "ms";
-  shadowCardGradient.style.webkitAnimation = "smooth-step-gradient " + duration + "ms";
+  shadowCard.style.webkitTransform = webkitTransform;
+  shadowCardGradient.style.webkitTransform = webkitTransform;
 }
