@@ -1,4 +1,4 @@
-var duration = 1000.0;
+var duration = 600.0;
 var angleX = 0;
 var angleY = 0;
 var angleZ = 0;
