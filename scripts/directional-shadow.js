@@ -66,12 +66,13 @@ function initializeDirectionalShadow(clip) {
     shadowGradientBack.className = "shadow-gradient-back";
     shadowGradientBack.style.width = (elem.offsetWidth - 10) + "px";
     shadowGradientBack.style.height = (elem.offsetHeight - 10) + "px";
-    shadowGradientBack.style.transform = rotateY(180deg);
-    shadowGradientBack.style.webkitTransform = rotateY(180deg);
+    shadowGradientBack.style.transform = "rotateY(180deg)";
+    shadowGradientBack.style.webkitTransform = "rotateY(180deg)";
 	  
     parent.insertBefore(shadowGradientPerspective, parent.childNodes[0]);
     shadowGradientPerspective.appendChild(shadowCardGradient);
     shadowCardGradient.appendChild(shadowGradient);
+    shadowCardGradient.appendChild(shadowGradientBack);
     
     // Add DOMMutObserver
     observer.observe(elem, config);
