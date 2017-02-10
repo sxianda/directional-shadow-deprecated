@@ -19,5 +19,16 @@
   display: block;
   margin: 5px;
   -webkit-filter: blur(8px);
-  background-image: -webkit-linear-gradient(top, #DCDCDC, #808080);
+  background-image: -webkit-linear-gradient(top right, #DCDCDC, #808080);
+  -webkit-backface-visibility: hidden; /* Chrome, Safari, Opera */
+  backface-visibility: hidden;
+}
+
+.shadow-gradient-back {
+  display: block;
+  margin: 5px;
+  -webkit-filter: blur(8px);
+  background-image: -webkit-linear-gradient(bottom left, #DCDCDC, #808080);
+  -webkit-backface-visibility: hidden; /* Chrome, Safari, Opera */
+  backface-visibility: hidden;
 }
