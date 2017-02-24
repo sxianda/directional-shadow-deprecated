@@ -4,11 +4,25 @@ var angleY = 0;
 var angleZ = 0;
 
 function toggleElement(card, distance, targetDegrees) {
+  cardRotateY(card, targetDegrees);
+}
+
+function cardRotateX(card, deg) {
   card.style.transition = "transform " + duration + "ms cubic-bezier(0.3, 0.6, 0.1, 1.0)";
-  card.style.webkitTransition = "-webkit-transform " + duration + "ms cubic-bezier(0.3, 0.6, 0.1, 1.0)";
+  var distance = window.getComputedStyle(card).getPropertyValue("transform-origin").split(" ")[0];
+  card.style.transform = "translateZ(" + distance + ") rotateX(" + deg + "deg)";
+}
   
-  card.style.transform = "translateZ(" + distance + "px) rotateY(" + targetDegrees + "deg)";
-  card.style.webkitTransform = "translateZ(" + distance + "px) rotateY(" + targetDegrees + "deg)";
+function cardRotateY(card, deg) {
+  card.style.transition = "transform " + duration + "ms cubic-bezier(0.3, 0.6, 0.1, 1.0)";
+  var distance = window.getComputedStyle(card).getPropertyValue("transform-origin").split(" ")[0];
+  card.style.transform = "translateZ(" + distance + ") rotateY(" + deg + "deg)";
+}
+
+function cardRotateZ(card, deg) {
+  card.style.transition = "transform " + duration + "ms cubic-bezier(0.3, 0.6, 0.1, 1.0)";
+  var distance = window.getComputedStyle(card).getPropertyValue("transform-origin").split(" ")[0];
+  card.style.transform = "translateZ(" + distance + ") rotateZ(" + deg + "deg)";
 }
 
 function flipX(distance) {
