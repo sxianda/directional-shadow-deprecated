@@ -5,7 +5,7 @@
 }
 
 .shadow-card-gradient {
-  opacity: 0.0001;
+  // opacity: 0.0001;
 }
 
 .shadow {
@@ -13,22 +13,37 @@
   background-color: #808080;
   margin: 5px;
   -webkit-filter: blur(8px);
+  opacity: 0.005;
 }
 
 .shadow-gradient {
   display: block;
+  position: absolute;
   margin: 5px;
   -webkit-filter: blur(8px);
   background-image: -webkit-linear-gradient(top right, #DCDCDC, #808080);
-  -webkit-backface-visibility: hidden; /* Chrome, Safari, Opera */
+  // -webkit-backface-visibility: hidden; /* Chrome, Safari, Opera */
   backface-visibility: hidden;
 }
 
 .shadow-gradient-back {
   display: block;
+  position: absolute;
   margin: 5px;
   -webkit-filter: blur(8px);
-  background-image: -webkit-linear-gradient(bottom left, #DCDCDC, #808080);
+  background-image: -webkit-linear-gradient(top right,  #DCDCDC, #808080);
   -webkit-backface-visibility: hidden; /* Chrome, Safari, Opera */
   backface-visibility: hidden;
+}
+
+@-webkit-keyframes smooth-step {
+    0% { opacity: 0.9999; -webkit-animation-timing-function: cubic-bezier(0.6, 0, 0.4, 1.0); }
+    20% { opacity: 0.0001; -webkit-animation-timing-function: cubic-bezier(0.6, 0, 0.4, 1.0); }
+    40% { opacity: 0.9999; -webkit-animation-timing-function: cubic-bezier(0.6, 0, 0.4, 1.0); }
+}
+
+@-webkit-keyframes smooth-step-gradient {
+    0% { opacity: 0.0001; -webkit-animation-timing-function: cubic-bezier(0.6, 0, 0.4, 1.0); }
+    20% { opacity: 0.9999; -webkit-animation-timing-function: cubic-bezier(0.6, 0, 0.4, 1.0); }
+    40% { opacity: 0.0001; -webkit-animation-timing-function: cubic-bezier(0.6, 0, 0.4, 1.0); }
 }
