@@ -5,7 +5,7 @@
 }
 
 .shadow-card-gradient {
-  // opacity: 0.0001;
+  opacity: 0.0001;
 }
 
 .shadow {
@@ -14,7 +14,7 @@
   background-color: #808080;
   margin: 5px;
   -webkit-filter: blur(8px);
-  opacity: 0.005;
+  opacity: 0.9;
 }
 
 .shadow-gradient {
