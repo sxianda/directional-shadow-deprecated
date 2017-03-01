@@ -12,6 +12,28 @@
         -webkit-transform-style: preserve-3d;
       }
     
+    .circle {
+      position: absolute;
+      top: 20px;
+      left: 100px;
+      width: 250px;
+      height: 250px;
+      border-radius: 125px;
+      transform-style: preserve-3d;
+      -webkit-transform-style: preserve-3d;
+    }
+    
+    .circle div {
+      // overflow: hidden;
+      border-radius: 125px;
+    }
+    
+    .circle figure {
+      overflow: hidden;
+      border-radius: 125px;
+      text-align: center;
+    }
+    
     .container {
       position: absolute;
     }
@@ -62,8 +84,15 @@
       height: 1000px;
       -webkit-perspective: 1000px;
       -webkit-perspective-origin: 250px 500px;
-      z-index: -1;
       will-change: transform;
+    }
+    
+    .shadow-collection {
+      position: absolute;
+    }
+    
+    div {
+      position: absolute;
     }
     
     body {
@@ -200,10 +229,21 @@
     </div>
    
     <div id="fifth-row">
-      <div class="container" style="top: 1800px; left: 500px">
+      <div class="container" style="top: 1800px; left: 300px">
         <div class ="shadow-collection">
           <div class="perspective">
             <div id="square-animation" class="directional-shadow square" shadow-x="0" shadow-y="0" shadow-depth="800">
+              <figure class="front">front</figure>
+              <figure class="back">This is the content.</figure>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="container" style="top: 1800px; left: 700px">
+        <div class ="shadow-collection">
+          <div class="perspective">
+            <div id="square-animation1" class="directional-shadow circle" shadow-x="0" shadow-y="0" shadow-depth="800">
               <figure class="front">front</figure>
               <figure class="back">This is the content.</figure>
             </div>

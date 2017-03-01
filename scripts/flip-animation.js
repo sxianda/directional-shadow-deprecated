@@ -43,6 +43,12 @@ function flipY(distance) {
 
   card.style.transform = "translateZ(" + distance + "px) rotateX(" + angleX + "deg) rotateY(" + angleY
       + "deg) rotateZ(" + angleZ + "deg)";
+      
+  var card1 = document.getElementById("square-animation1");
+  card1.style.transition = "transform " + duration + "ms cubic-bezier(0.3, 0.6, 0.1, 1.0)";
+
+  card1.style.transform = "translateZ(" + distance + "px) rotateX(" + angleX + "deg) rotateY(" + angleY
+      + "deg) rotateZ(" + angleZ + "deg)";
 }
 
 function flipZ(distance) {
