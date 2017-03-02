@@ -5,15 +5,16 @@
 }
 
 .shadow-card-gradient {
-  // opacity: 0.0001;
+  opacity: 0.0001;
 }
 
 .shadow {
   display: block;
+  position: absolue;
   background-color: #808080;
   margin: 5px;
   -webkit-filter: blur(8px);
-  opacity: 0.005;
+  opacity: 0.9;
 }
 
 .shadow-gradient {
@@ -21,19 +22,7 @@
   position: absolute;
   margin: 5px;
   -webkit-filter: blur(8px);
-  background-image: -webkit-linear-gradient(top right, #DCDCDC, #808080);
-  // -webkit-backface-visibility: hidden; /* Chrome, Safari, Opera */
-  backface-visibility: hidden;
-}
-
-.shadow-gradient-back {
-  display: block;
-  position: absolute;
-  margin: 5px;
-  -webkit-filter: blur(8px);
-  background-image: -webkit-linear-gradient(top right,  #DCDCDC, #808080);
-  -webkit-backface-visibility: hidden; /* Chrome, Safari, Opera */
-  backface-visibility: hidden;
+  background-image: -webkit-linear-gradient(right, #DCDCDC, #808080);
 }
 
 @-webkit-keyframes smooth-step {
