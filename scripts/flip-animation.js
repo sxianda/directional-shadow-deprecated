@@ -38,14 +38,14 @@ function flipX(distance) {
 
 function flipY(distance) {
   var card = document.getElementById("square-animation");
-  angleY += 45;
+  angleY += 30;
   card.style.transition = "transform " + duration + "ms cubic-bezier(0.3, 0.6, 0.1, 1.0)";
 
   card.style.transform = "translateZ(" + distance + "px) rotateX(" + angleX + "deg) rotateY(" + angleY
       + "deg) rotateZ(" + angleZ + "deg)";
       
   var card1 = document.getElementById("square-animation1");
-  card1.style.transition = "transform " + duration + "ms cubic-bezier(0.3, 0.6, 0.1, 1.0)";
+  card1.style.transition = "transform " + 6000 + "ms cubic-bezier(0.3, 0.6, 0.1, 1.0)";
 
   card1.style.transform = "translateZ(" + distance + "px) rotateX(" + angleX + "deg) rotateY(" + angleY
       + "deg) rotateZ(" + angleZ + "deg)";

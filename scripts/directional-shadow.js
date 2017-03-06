@@ -108,6 +108,9 @@ function updateShadows(card, originDegX, originDegY, originDegZ) {
     transitionDuration = transition.split(" ")[1];
   else transitionDuration = webkitTransition.split(" ")[1];
 
+  var opacityTransition = webkitTransition.replace(webkitTransition.split(" ")[0], "opacity");
+  webkitTransition = webkitTransition;
+
   // Update shadow transition and transforms
   shadowCard.style.webkitTransition = webkitTransition;
   shadowCardGradient.style.webkitTransition = webkitTransition;
@@ -159,17 +162,38 @@ function updateShadows(card, originDegX, originDegY, originDegZ) {
     location1 = 4;
   }
 
-  var opacity0 = 0.0 + cubicBezier(0.6, 0.0, 0.4, 1.0, x0);
-  var opacity1 = 0.0 + cubicBezier(0.6, 0.0, 0.4, 1.0, x1);
-  var inverseOpacity0 = 1.0 - opacity0;
-  var inverseOpacity1 = 1.0 - opacity1;
+
+  //                    |
+  //                    |
+  //   location1        |    location2
+  //                    |
+  //---------------------------------------
+  //                    |
+  //   location3        |    location4
+  //                    |
+  //                    |
+
+  var opacity0 = 0.1 + 0.9 * cubicBezier(0.6, 0.0, 0.4, 1.0, x0);
+  var opacity1 = 0.1 + 0.9 * cubicBezier(0.6, 0.0, 0.4, 1.0, x1);
+
+  opacity0 = 0.5 + 0.4 * Math.sin(y0);
+  opacity1 = 0.5 + 0.4 * Math.sin(y1);
+  opacity0 = opacity0.toFixed(4);
+  opacity1 = opacity1.toFixed(4);
+  var inverseOpacity0 = (1.0 - opacity0).toFixed(4);
+  var inverseOpacity1 = (1.0 - opacity1).toFixed(4);
   var keyFrames = '';
   var keyFramesInverse = '';
-  var keyframePrefix = '@-webkit-keyframes smooth-shadow-gradient { ';
-  var keyframePrefixInverse = '@-webkit-keyframes smooth-shadow { ';
+  var keyframePrefix = '@keyframes smooth-shadow-gradient { ';
+  var keyframePrefixInverse = '@keyframes smooth-shadow { ';
   var opacityPrefix = ' { opacity: ';
-  var timingFunction = '; -webkit-animation-timing-function: cubic-bezier(0.6, 0, 0.4, 1.0); } ';
+  var timingFunctionIn = '; animation-timing-function: ease-in; } ';
+  var timingFunctionOut = '; animation-timing-function: ease-out; } ';
+  var timingFunction = '; animation-timing-function: cubic-bezier(0.6, 0, 0.4, 1.0); }'; 
   var keyFrameSuffix = '}';
+  var degreeDuration = (y1 - y0) % 360;
+  if (degreeDuration < 0)
+    degreeDuration += 360;
   if (location0 == location1) {
     keyFrames = keyframePrefix
         + '0% ' + opacityPrefix + opacity0 + timingFunction
@@ -181,10 +205,12 @@ function updateShadows(card, originDegX, originDegY, originDegZ) {
         + keyFrameSuffix;
   } else if (location0 + location1 == 5) {
     // 1->4, 4->1, 2->3 or 3->2
-    var percentage = (90.0 * location0 - y0) * 100.0 / ((y1 - y0) % 360);
+    var percentage = (90.0 * location0 - y0) * 100.0 / degreeDuration;
     keyFrames = keyframePrefix
         + '0% ' + opacityPrefix + opacity0 + timingFunction
-        + percentage + '% ' + opacityPrefix + '0.1' + timingFunction
+        + ((percentage != 0 && percentage != 100)
+           ? (percentage + '% ' + opacityPrefix + '0.1' + timingFunctionIn)
+           : '')
         + '100% ' + opacityPrefix + opacity1 + timingFunction
         + keyFrameSuffix;
     keyFramesInverse = keyframePrefixInverse
@@ -194,7 +220,7 @@ function updateShadows(card, originDegX, originDegY, originDegZ) {
         + keyFrameSuffix;
   } else if (location0 - location1 == 1 || location0 - location1 == -1) {
     // 1->2, 2->1, 3->4 or 4->3
-    var percentage = (90.0 * location0 - y0) * 100.0 / ((y1- y0) % 360);
+    var percentage = (90.0 * location0 - y0) * 100.0 / degreeDuration;
     keyFrames = keyframePrefix
         + '0% ' + opacityPrefix + opacity0 + timingFunction
         + percentage + '% ' + opacityPrefix + '0.9' + timingFunction
@@ -210,11 +236,11 @@ function updateShadows(card, originDegX, originDegY, originDegZ) {
     var criteria2 = (y1 - y0) % 360 < 180;
     var percentage1, percentage2 = 0;
     if (criteria2) {
-      percentage1 = (90.0 * location0 - y0) * 100.0 / ((y1 - y0) % 360);
-      percentage2 = (90.0 * location0 + 90.0 - y0) * 100.0 / ((y1 - y0) % 360);
+      percentage1 = (90.0 * location0 - y0) * 100.0 / degreeDuration;
+      percentage2 = (90.0 * location0 + 90.0 - y0) * 100.0 / degreeDuration;
     } else {
-      percentage1 = (y0 - 90.0 * (location0 - 1)) * 100.0 / ((y1 - y0) % 360);
-      percentage2 = (y0 - 90.0 * (location0 - 2)) * 100.0 / ((y1 - y0) % 360);
+      percentage1 = (y0 - 90.0 * (location0 - 1)) * 100.0 / degreeDuration;
+      percentage2 = (y0 - 90.0 * (location0 - 2)) * 100.0 / degreeDuration;
     }
     if ((criteria1 && criteria2) || (!criteria1 && !criteria2)) {
       keyFrames = keyframePrefix
@@ -244,8 +270,11 @@ function updateShadows(card, originDegX, originDegY, originDegZ) {
           + keyFrameSuffix;
     }
   }
-
+  console.log(keyFramesInverse);
   styleElement.innerHTML = keyFrames + " " + keyFramesInverse;
+  shadowCardGradient.style.webkitAnimation = "";
+  shadowCard.style.webkitAnimation = "";
+  document.body.offsetTop;
   shadowCardGradient.style.webkitAnimation = "smooth-shadow-gradient " + transitionDuration;
   shadowCardGradient.style.opacity = opacity1;
   shadowCard.style.webkitAnimation = "smooth-shadow " + transitionDuration;
